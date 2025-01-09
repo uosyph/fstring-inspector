@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 
 
 def inspect_fstring(line):
@@ -26,3 +27,19 @@ def inspect_file(file_path):
             problematic_lines.append((line_number, result.strip()))
 
     return problematic_lines
+
+
+def inspect_directory(directory_path):
+    results = {}
+    directory = Path(directory_path)
+    
+    # Recursively find all python files
+    for file_path in directory.rglob(f"*.py"):
+        try:
+            problematic_lines = inspect_file(file_path)
+            if problematic_lines:
+                results[str(file_path)] = problematic_lines
+        except Exception as e:
+            print(f"Error processing {file_path}: {e}")
+
+    return results
