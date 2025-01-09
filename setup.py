@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="fstring_inspector",
-    version="0.1.1",
+    version="0.2.0",
     author="Yousef Saeed",
     author_email="uosyph@gmail.com",
     description="A tool to analyze and identify issues with f-strings in Python code, ensuring proper formatting, usage, and preventing errors.",
